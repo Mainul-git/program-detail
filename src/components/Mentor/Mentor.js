@@ -3,16 +3,16 @@ import { Link, useHistory } from 'react-router-dom';
 import MentorDialog from '../MentorDialog/MentorDialog';
 import './Mentor.css'
 const Mentor = ({data,index }) => {
+  //Matching mentorId according to API that's why 1 added
   const value=index+1
+  
   const history=useHistory()
     const [modalIsOpen,setIsOpen] = useState(false);
 
     
-    function openModal(e) {
+    function openModal() {
       
-    
-
-      setIsOpen(true);
+    setIsOpen(true);
     }
    
 
@@ -42,8 +42,8 @@ const Mentor = ({data,index }) => {
           
      
          
-     
-<MentorDialog modalIsOpen={modalIsOpen}  value={value}closeModal={closeModal}></MentorDialog>
+     {/* Passing value as mentorId */}
+<MentorDialog modalIsOpen={modalIsOpen}  value={value} closeModal={closeModal}></MentorDialog>
         </div>
     );
 };

@@ -19,7 +19,6 @@ const ProgramDetail = () => {
             .catch(() => console.log("Can’t access  response. Blocked by browser?"))
     },[])
 
-console.log(mentor)
     return (
         <div className="text-center ">
             <h1><u>Program Detail Page</u></h1>

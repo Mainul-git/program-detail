@@ -19,7 +19,9 @@ const customStyles = {
 Modal.setAppElement('#root')
 const MentorDialog = ({modalIsOpen, closeModal,value}) => {
   const mentorId=value
-  console.log(value)
+  
+  
+  
     const[mentorDetail,setMentorDetail]=useState({})
     
   

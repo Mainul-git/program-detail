@@ -11,29 +11,22 @@ const ProgramDirectoryChild = ({data}) => {
                 data.map( data=> 
                 <div className="col-md-4 mb-2 ">
                     <Link className="justify-content-center" style={{textDecoration:"none",color:"inherit", textAlign:'center'}} to={`programDetail/${data.id}`}>
+                       
                         <div className="card " style={{background:"rgb(205, 132, 129)"}}>
          <h4 className="text-white">{data.name}</h4>
             <p className="text-dark">{data.category}<br/>
-         {data.shortDescription}<br/>
-         {data.phase}<br/>
-         {data.startDate}<br/>
-         {data.duration}</p>
+                                  {data.shortDescription}<br/>
+                                  {data.phase}<br/>
+                                  {data.startDate}<br/>
+                                  {data.duration}</p>
          </div>
+
          </Link> 
             
      </div>)
         }
     </div>
-        {/* // <div className="col-md-4">
-        //     <h4>{data.name}</h4>
-        //     <p>{data.category}<br/>
-        //     {data.shortDescription}<br/>
-        //     {data.phase}<br/>
-        //     {data.startDate}<br/>
-        //     {data.duration}</p> 
-            
-        // </div> */}
-
+       
         </>
     );
 };
