@@ -13,6 +13,7 @@ const ProgramDetail = () => {
         .then(res=>res.json())
         .then(json=>{
             setDetail(json)
+
             setMentor(json.mentors)
         })
             .catch(() => console.log("Can’t access " + " response. Blocked by browser?"))
@@ -20,11 +21,27 @@ const ProgramDetail = () => {
 
 console.log(mentor)
     return (
-        <div>
-           <h1>{detail.name}</h1> 
-           <div className="row">
+        <div className="text-center ">
+            <h1><u>Program Details Page</u></h1>
+
+<h3><u>{detail.name}</u></h3>
+{/* dynamic data of API is inside bold tag */}
+         <i> <p>You want to join<b> {detail.name}</b>  program.<br/>Hope,you will enjoy this program safely.<br/>
+           The program is now under <b>{detail.category}</b>  category
+           <span className=""> This is a very crucial program. <br/>You will have great mentors whose names are shown below</span>
+          </p></i>   
+          
+          
+           <div className="row ml-1 justify-content-around pr-3">
+
+
+               {/* passing index as second argument to match with the mentorId  */}
+
+
+
+               <h1>Mentors of the program : </h1>
                {
-                   mentor.map((data,index)=><Mentor  data={data} index={index} ></Mentor>)
+               mentor.length===0?<img style={{height:'300px',width:'300px'}} src="https://i.ibb.co/44tH15m/Spinner-1s-200px.gif" /> :    mentor.map((data,index)=><Mentor  data={data} index={index} ></Mentor>)
                }
            </div>
         </div>

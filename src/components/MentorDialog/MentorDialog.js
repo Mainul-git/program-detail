@@ -11,7 +11,9 @@ const customStyles = {
     bottom                : 'auto',
     marginRight           : '-50%',
     transform             : 'translate(-50%, -50%)',
-    backgroundColor       : 'rgb(205, 132, 129)'
+    backgroundColor       : 'rgb(205, 132, 129)',
+    height                : '',
+    width                  :'500px'
   }
 };
 Modal.setAppElement('#root')
@@ -27,7 +29,7 @@ const MentorDialog = ({modalIsOpen, closeModal,value}) => {
         .then(res=>res.json())
         .then(json=>setMentorDetail(json)
             )
-            .catch(() => console.log("Can’t access " + " response. Blocked by browser?"))
+            .catch(() => console.log("Can’t access  response. Blocked by browser?"))
     },[])
    
     
@@ -42,16 +44,35 @@ const MentorDialog = ({modalIsOpen, closeModal,value}) => {
           contentLabel="Example Modal"
         >
  
-          <h2 >Hello</h2>
-          <button onClick={closeModal}>close</button>
-          <div>I am a modal</div>
-          <form>
+          
+       
+          <div className="row">
+            <div className="col-md-3">
+            <img  style={{height:"70px"}}src={mentorDetail.profilePic}/>
+            </div>
+            <div className="col-md-9 ">
+         <h1 className="text-white d-flex ml-3">{mentorDetail.firstName}  {mentorDetail.lastName}</h1>
+
+            <p><b> Gender :</b>{mentorDetail.gender}<br/>
+            <b>Email :</b>{mentorDetail.email}<br/>
+            
+       
+       {/* He/She returns along with the gender conditioning  */}
+       <b>Address :</b> 
+            {
+              mentorDetail.gender=="Male"?`He lives in ${mentorDetail.location}`:`She lives in ${mentorDetail.location}`
+            }
+
+            </p>
+            </div>
+          </div>
+          
             
          
-            <h1>{mentorDetail.firstName}{mentorDetail.lastName}</h1>
-            <p>{mentorDetail.id}</p>
-            <img  style={{height:"40px"}}src={mentorDetail.profilePic}/>
-          </form>
+          
+            
+          
+            <button class="btn btn-warning m-auto d-flex " onClick={closeModal}>close </button>
         </Modal>
         </div>
     );
