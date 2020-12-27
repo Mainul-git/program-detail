@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
-import { useParams } from 'react-router-dom';
+
 import './MentorDialog.css'
  
 const customStyles = {
@@ -12,12 +12,13 @@ const customStyles = {
     marginRight           : '-50%',
     transform             : 'translate(-50%, -50%)',
     backgroundColor       : 'rgb(205, 132, 129)',
-    height                : '',
-    width                  :'500px'
+    height                : '300px',
+    width                  :'400px'
   }
 };
 Modal.setAppElement('#root')
 const MentorDialog = ({modalIsOpen, closeModal,value}) => {
+  const mentorId=value
   console.log(value)
     const[mentorDetail,setMentorDetail]=useState({})
     
@@ -25,7 +26,7 @@ const MentorDialog = ({modalIsOpen, closeModal,value}) => {
     
 
     useEffect(()=>{
-        fetch(`https://cors-anywhere.herokuapp.com/http://test.catalysed.org/mentors/${value}`)
+        fetch(`https://cors-anywhere.herokuapp.com/http://test.catalysed.org/mentors/${mentorId}`)
         .then(res=>res.json())
         .then(json=>setMentorDetail(json)
             )

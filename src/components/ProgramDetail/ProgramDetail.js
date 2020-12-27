@@ -16,13 +16,13 @@ const ProgramDetail = () => {
 
             setMentor(json.mentors)
         })
-            .catch(() => console.log("Can’t access " + " response. Blocked by browser?"))
+            .catch(() => console.log("Can’t access  response. Blocked by browser?"))
     },[])
 
 console.log(mentor)
     return (
         <div className="text-center ">
-            <h1><u>Program Details Page</u></h1>
+            <h1><u>Program Detail Page</u></h1>
 
 <h3><u>{detail.name}</u></h3>
 {/* dynamic data of API is inside bold tag */}
