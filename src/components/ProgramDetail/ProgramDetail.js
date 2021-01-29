@@ -9,7 +9,7 @@ const ProgramDetail = () => {
     
     useEffect(()=>{
         
-        fetch(`https://cors-anywhere.herokuapp.com/http://test.catalysed.org/programs/${programId}`)
+        fetch(`https://cors-anywhere.herokuapp.com/https://glassy-totality-302717.el.r.appspot.com/programs/${programId}`)
         .then(res=>res.json())
         .then(json=>{
             setDetail(json)
