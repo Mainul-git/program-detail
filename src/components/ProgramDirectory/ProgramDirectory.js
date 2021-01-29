@@ -13,7 +13,7 @@ const ProgramDirectory = () => {
     const[phase,setPhase]=useState("")
     const[data,setData]=useState([])
     const[q,setQ]=useState("")
-    debugger
+ 
     useEffect(()=>{
         fetch('https://api.allorigins.win/raw?url=https://glassy-totality-302717.el.r.appspot.com/programs')
         .then(res=>res.json())
