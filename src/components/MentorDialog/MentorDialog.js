@@ -28,7 +28,7 @@ const MentorDialog = ({modalIsOpen, closeModal,value}) => {
     
 
     useEffect(()=>{
-        fetch(`https://cors-anywhere.herokuapp.com/http://test.catalysed.org/mentors/${mentorId}`)
+        fetch(`https://cors-anywhere.herokuapp.com/https://catalysed-iteration1.el.r.appspot.com/mentors/${mentorId}`)
         .then(res=>res.json())
         .then(json=>setMentorDetail(json)
             )

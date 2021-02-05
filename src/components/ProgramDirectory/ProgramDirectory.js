@@ -11,11 +11,14 @@ const ProgramDirectory = () => {
     const[checked3,setChecked3]=useState(false)
     const[checked4,setChecked4]=useState(false)
     const[phase,setPhase]=useState("")
+    const[phase4,setPhase4]=useState("")
+    const[phase2,setPhase2]=useState("")
+    const[phase3,setPhase3]=useState("")
     const[data,setData]=useState([])
     const[q,setQ]=useState("")
  
     useEffect(()=>{
-        fetch('https://api.allorigins.win/raw?url=https://glassy-totality-302717.el.r.appspot.com/programs')
+        fetch('https://api.allorigins.win/raw?url=https://catalysed-iteration1.el.r.appspot.com/programs')
         .then(res=>res.json())
         .then(json=>setData(json)
             )
@@ -29,10 +32,7 @@ const check=(e)=>{
     if(!checked){
       
        
-        setChecked2(false)
-        setChecked3(false)
-        setChecked4(false)
-        setChecked(false)
+       
         setPhase(e.target.value)
         
      
@@ -43,43 +43,34 @@ const check=(e)=>{
 }
 const check2=(e)=>{
     if(!checked2){
-        setChecked(false)
-        setChecked3(false)
-        setChecked4(false)
-        setChecked2(false)
-        setPhase(e.target.value)
+      
+        setPhase2(e.target.value)
         
     }
      if(checked2){
-        setPhase("")
+        setPhase2("")
     }
 }
 const check3=(e)=>{
     if(!checked3){
-        setChecked(false)
-        setChecked2(false)
-        setChecked4(false)
-        setChecked3(false)
-        setPhase(e.target.value)
+        
+        setPhase3(e.target.value)
         
        
     }
      if(checked3){
-        setPhase("")
+        setPhase3("")
     }
     
 }
 const check4=(e)=>{
     if(!checked4){
-        setChecked(false)
-        setChecked2(false)
-        setChecked3(false)
-        setChecked4(false)
-        setPhase(e.target.value)
+      
+        setPhase4(e.target.value)
     
     }
      if(checked4){
-        setPhase("")
+        setPhase4("")
     }
 }
 
@@ -89,23 +80,329 @@ const check4=(e)=>{
           
          
       if(q.length===0){
-        return(r.filter(r=>
-                    r.phase.indexOf(phase)>-1
-                   ))
-      }
-       
-        if(phase){
-
+        if(phase && phase2 && phase3 && phase4){
             return(r.filter(r=>
                 r.phase.indexOf(phase)>-1 ||
-                r.name.toLowerCase().indexOf(q)>-1 ||
+                r.phase.indexOf(phase2)>-1 ||
+                 r.phase.indexOf(phase3)>-1 ||
+                 r.phase.indexOf(phase4)>-1
+               
+               ))  
+        
+         }
+        if(phase && phase2 && phase3 ){
+            return(r.filter(r=>
+                r.phase.indexOf(phase)>-1 ||
+                r.phase.indexOf(phase2)>-1 ||
+                 r.phase.indexOf(phase3)>-1 
+               
+               ))  
+        
+         }
+         if(phase && phase2 && phase4){
+            return(r.filter(r=>
+                r.phase.indexOf(phase)>-1 ||
+                r.phase.indexOf(phase2)>-1 ||
+                 r.phase.indexOf(phase4)>-1 
+               
+               ))  
+        
+         }
+         if(phase && phase3 && phase4){
+            return(r.filter(r=>
+                r.phase.indexOf(phase)>-1 ||
+                r.phase.indexOf(phase3)>-1 ||
+                 r.phase.indexOf(phase4)>-1 
+               
+               ))  
+        
+         }
+         if(phase2 && phase3 && phase4){
+            return(r.filter(r=>
+                r.phase.indexOf(phase2)>-1 ||
+                r.phase.indexOf(phase3)>-1 ||
+                 r.phase.indexOf(phase4)>-1 
+               
+               ))  
+        
+         }
+     
+        if(phase && phase2){
+            return(r.filter(r=>
+                r.phase.indexOf(phase)>-1 ||
+                r.phase.indexOf(phase2)>-1
+               
+               ))  
+        
+         }
+         if(phase && phase3){
+            return(r.filter(r=>
+                r.phase.indexOf(phase)>-1 ||
+                r.phase.indexOf(phase3)>-1
+                
+               ))  
+        
+         }
+         if(phase && phase4){
+            return(r.filter(r=>
+                r.phase.indexOf(phase)>-1 ||
+                r.phase.indexOf(phase4)>-1
+               
+               ))  
+        
+         }
+         if(phase2 && phase3){
+            return(r.filter(r=>
+                r.phase.indexOf(phase2)>-1 ||
+                r.phase.indexOf(phase3)>-1
+               
+               ))  
+        
+         }
+         if(phase2 && phase4){
+            return(r.filter(r=>
+                r.phase.indexOf(phase2)>-1 ||
+                r.phase.indexOf(phase4)>-1
+               
+               ))  
+        
+         }
+         if(phase3 && phase4){
+            return(r.filter(r=>
+                r.phase.indexOf(phase3)>-1 ||
+                r.phase.indexOf(phase4)>-1
+                
+               ))  
+        
+         }
+         if(phase) {
+            return(r.filter(r=>
+                r.phase.indexOf(phase)>-1 
+               
+               ))  
+        }
+        if(phase2){
+            return(r.filter(r=>
+                r.phase.indexOf(phase2)>-1 
+                
+               ))  
+        }
+        if(phase3){
+            return(r.filter(r=>
+                r.phase.indexOf(phase3)>-1 
+               
+               ))  
+        }
+        if(phase4){
+            return(r.filter(r=>
+                r.phase.indexOf(phase4)>-1 
+              
+               ))  
+        }
+        
+        }
+
+        // after typing  search
+
+
+        if(phase && phase2 && phase3 && phase4){
+
+            return(r.filter(r=>
+                (r.phase.indexOf(phase)>-1 ||
+                r.phase.indexOf(phase2)>-1 ||
+                r.phase.indexOf(phase3)>-1 ||
+                r.phase.indexOf(phase4)>-1) &&
+                (r.name.toLowerCase().indexOf(q)>-1 ||
+                r.name.indexOf(phase)>-1 ||
                  r.category.indexOf(q)>-1   ||
                  r.category.toLowerCase().indexOf(q)>-1  ||
                  r.shortDescription.indexOf(q)>-1 ||
                  r.shortDescription.toLowerCase().indexOf(q)>-1||
                  r.phase.toLowerCase().indexOf(q)>-1||
-                 r.phase.indexOf(q)>-1 
+                 r.phase.indexOf(q)>-1 )
                 ))
+            
+                
+            
+        }
+
+        if(phase && phase2 && phase3){
+
+            return(r.filter(r=>
+                (r.phase.indexOf(phase)>-1 ||
+                r.phase.indexOf(phase2)>-1 ||
+                r.phase.indexOf(phase3)>-1) &&
+                (r.name.toLowerCase().indexOf(q)>-1 ||
+                r.name.indexOf(phase)>-1 ||
+                 r.category.indexOf(q)>-1   ||
+                 r.category.toLowerCase().indexOf(q)>-1  ||
+                 r.shortDescription.indexOf(q)>-1 ||
+                 r.shortDescription.toLowerCase().indexOf(q)>-1||
+                 r.phase.toLowerCase().indexOf(q)>-1||
+                 r.phase.indexOf(q)>-1 )
+                ))
+            
+                
+            
+        }
+        if(phase && phase2 && phase4){
+
+            return(r.filter(r=>
+                (r.phase.indexOf(phase)>-1 ||
+                r.phase.indexOf(phase2)>-1 ||
+                r.phase.indexOf(phase4)>-1) &&
+                (r.name.toLowerCase().indexOf(q)>-1 ||
+                r.name.indexOf(phase)>-1 ||
+                 r.category.indexOf(q)>-1   ||
+                 r.category.toLowerCase().indexOf(q)>-1  ||
+                 r.shortDescription.indexOf(q)>-1 ||
+                 r.shortDescription.toLowerCase().indexOf(q)>-1||
+                 r.phase.toLowerCase().indexOf(q)>-1||
+                 r.phase.indexOf(q)>-1 )
+                ))
+            
+                
+            
+        }
+        if(phase2 && phase3 && phase4){
+
+            return(r.filter(r=>
+                (r.phase.indexOf(phase2)>-1 ||
+                r.phase.indexOf(phase3)>-1 ||
+                r.phase.indexOf(phase4)>-1) &&
+                (r.name.toLowerCase().indexOf(q)>-1 ||
+                r.name.indexOf(phase)>-1 ||
+                 r.category.indexOf(q)>-1   ||
+                 r.category.toLowerCase().indexOf(q)>-1  ||
+                 r.shortDescription.indexOf(q)>-1 ||
+                 r.shortDescription.toLowerCase().indexOf(q)>-1||
+                 r.phase.toLowerCase().indexOf(q)>-1||
+                 r.phase.indexOf(q)>-1 )
+                ))
+            
+                
+            
+        }
+        if(phase && phase2){
+
+            return(r.filter(r=>
+                (r.phase.indexOf(phase)>-1 ||
+                r.phase.indexOf(phase2)>-1) &&
+                (r.name.toLowerCase().indexOf(q)>-1 ||
+                r.name.indexOf(phase)>-1 ||
+                 r.category.indexOf(q)>-1   ||
+                 r.category.toLowerCase().indexOf(q)>-1  ||
+                 r.shortDescription.indexOf(q)>-1 ||
+                 r.shortDescription.toLowerCase().indexOf(q)>-1||
+                 r.phase.toLowerCase().indexOf(q)>-1||
+                 r.phase.indexOf(q)>-1 )
+                ))
+            
+                
+            
+        }
+        if(phase && phase3){
+
+            return(r.filter(r=>
+                (r.phase.indexOf(phase)>-1 ||
+                r.phase.indexOf(phase3)>-1) &&
+                (r.name.toLowerCase().indexOf(q)>-1 ||
+                r.name.indexOf(phase)>-1 ||
+                 r.category.indexOf(q)>-1   ||
+                 r.category.toLowerCase().indexOf(q)>-1  ||
+                 r.shortDescription.indexOf(q)>-1 ||
+                 r.shortDescription.toLowerCase().indexOf(q)>-1||
+                 r.phase.toLowerCase().indexOf(q)>-1||
+                 r.phase.indexOf(q)>-1 )
+                ))
+            
+                
+            
+        }
+        if(phase && phase4){
+
+            return(r.filter(r=>
+                (r.phase.indexOf(phase)>-1 ||
+                r.phase.indexOf(phase4)>-1) &&
+                (r.name.toLowerCase().indexOf(q)>-1 ||
+                r.name.indexOf(phase)>-1 ||
+                 r.category.indexOf(q)>-1   ||
+                 r.category.toLowerCase().indexOf(q)>-1  ||
+                 r.shortDescription.indexOf(q)>-1 ||
+                 r.shortDescription.toLowerCase().indexOf(q)>-1||
+                 r.phase.toLowerCase().indexOf(q)>-1||
+                 r.phase.indexOf(q)>-1 )
+                ))
+            
+                
+            
+        }
+       
+        if(phase){
+
+            return(r.filter(r=>
+                (r.phase.indexOf(phase)>-1) &&
+                (r.name.toLowerCase().indexOf(q)>-1 ||
+                r.name.indexOf(phase)>-1 ||
+                 r.category.indexOf(q)>-1   ||
+                 r.category.toLowerCase().indexOf(q)>-1  ||
+                 r.shortDescription.indexOf(q)>-1 ||
+                 r.shortDescription.toLowerCase().indexOf(q)>-1||
+                 r.phase.toLowerCase().indexOf(q)>-1||
+                 r.phase.indexOf(q)>-1 )
+                ))
+            
+                
+            
+        }
+        if(phase2){
+
+            return(r.filter(r=>
+                (r.phase.indexOf(phase2)>-1) &&
+                (r.name.toLowerCase().indexOf(q)>-1 ||
+                r.name.indexOf(phase2)>-1 ||
+                 r.category.indexOf(q)>-1   ||
+                 r.category.toLowerCase().indexOf(q)>-1  ||
+                 r.shortDescription.indexOf(q)>-1 ||
+                 r.shortDescription.toLowerCase().indexOf(q)>-1||
+                 r.phase.toLowerCase().indexOf(q)>-1||
+                 r.phase.indexOf(q)>-1 )
+                ))
+            
+                
+            
+        }
+        if(phase3){
+
+            return(r.filter(r=>
+                (r.phase.indexOf(phase3)>-1) &&
+                (r.name.toLowerCase().indexOf(q)>-1 ||
+                r.name.indexOf(phase3)>-1 ||
+                 r.category.indexOf(q)>-1   ||
+                 r.category.toLowerCase().indexOf(q)>-1  ||
+                 r.shortDescription.indexOf(q)>-1 ||
+                 r.shortDescription.toLowerCase().indexOf(q)>-1||
+                 r.phase.toLowerCase().indexOf(q)>-1||
+                 r.phase.indexOf(q)>-1 )
+                ))
+            
+                
+            
+        }
+        if(phase4){
+
+            return(r.filter(r=>
+                (r.phase.indexOf(phase4)>-1) &&
+                (r.name.toLowerCase().indexOf(q)>-1 ||
+                r.name.indexOf(phase3)>-1 ||
+                 r.category.indexOf(q)>-1   ||
+                 r.category.toLowerCase().indexOf(q)>-1  ||
+                 r.shortDescription.indexOf(q)>-1 ||
+                 r.shortDescription.toLowerCase().indexOf(q)>-1||
+                 r.phase.toLowerCase().indexOf(q)>-1||
+                 r.phase.indexOf(q)>-1 )
+                ))
+            
                 
             
         }
