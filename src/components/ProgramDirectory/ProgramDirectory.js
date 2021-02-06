@@ -207,13 +207,15 @@ const check4=(e)=>{
 
         if(phase && phase2 && phase3 && phase4){
 
+
             return(r.filter(r=>
                 (r.phase.indexOf(phase)>-1 ||
                 r.phase.indexOf(phase2)>-1 ||
                 r.phase.indexOf(phase3)>-1 ||
                 r.phase.indexOf(phase4)>-1) &&
-                (r.name.toLowerCase().indexOf(q)>-1 ||
-                r.name.indexOf(phase)>-1 ||
+                ( r.name.indexOf(phase)>-1 ||
+                r.name.toLowerCase().indexOf(q)>-1 ||
+               
                  r.category.indexOf(q)>-1   ||
                  r.category.toLowerCase().indexOf(q)>-1  ||
                  r.shortDescription.indexOf(q)>-1 ||
